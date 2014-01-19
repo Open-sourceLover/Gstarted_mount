@@ -1,0 +1,44 @@
+*HEADING
+Axisymmetric mount analysis under axial loading
+**SI Units-Length = m, Mass=kg, Time=s, Force=N
+**Stress=Pa(N/m2),Energy=J,Density=(kg/m3) 
+***
+***
+*INCLUDE,INPUT=Nall.inp
+***Nall contains Node set NallMou
+*INCLUDE,INPUT=EPla.inp
+***EPla contains Element set EPlate
+*INCLUDE,INPUT=ERub.inp
+***ERub contains Element set ERubber
+*INCLUDE,INPUT=MatCardAll.inp
+***MatCardAll contans Material cards RUBBER and STEEL
+*INCLUDE,INPUT=NMisc.inp
+***NMisc contains Node sets--NBottom,NLeft,NMiddle,NOut,NRight
+***
+***
+*SOLID SECTION,MATERIAL=RUBBER,ELSET=ERubber
+*SOLID SECTION,MATERIAL=STEEL,ELSET=EPlate
+***
+***
+*STEP, NLGEOM=YES
+*STATIC,DIRECT
+0.1,1.0
+***
+**Boundary conditions
+**
+*BOUNDARY
+NMiddle, 2, 2, 0.0
+**
+**Pressure load
+**
+*DLOAD
+EPlate, P1, 0.5E6
+**
+** Output requests
+**
+*
+*EL FILE
+S,U
+*NODE PRINT, NSET=NOut
+U,
+*END STEP

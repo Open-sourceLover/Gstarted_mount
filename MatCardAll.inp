@@ -1,0 +1,18 @@
+***
+**Two - materials (RUBBER and STEEL) are in this input deck.
+***
+*MATERIAL,NAME=RUBBER
+*ELASTIC
+100E9,0.1
+*DENSITY
+1000
+***
+***
+*MATERIAL, NAME=STEEL
+*ELASTIC
+2.0E11, 0.3
+*DENSITY
+7800
+***
+***
+***
